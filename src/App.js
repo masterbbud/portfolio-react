@@ -2,21 +2,31 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  function clickHome() {
+    
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="App-clickables">
+          <div onClick={clickHome} className="App-navbox clicked">
+            <div className="App-navtext">
+              Home
+            </div>
+          </div>
+          <div className="App-navbox">
+            Resume
+          </div>
+          <div className="App-navbox">
+            Projects
+          </div>
+          <div className="App-navbox">
+            Contact
+          </div>
+        </div>
+        <div className="App-colorbar">
+
+        </div>
       </header>
     </div>
   );
