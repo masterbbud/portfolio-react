@@ -5,76 +5,14 @@
 
 .App {
   text-align: center;
-}
-
-.App-header {
-  height: 6vh;
+  width: 100vw;
+  height: 100vh;
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 2vh;
-  color: white;
-  user-select: none;
 }
 
-.App-clickables {
-  flex: 5;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.page-main {
+  overflow-y: auto;
 }
-
-.App-colorbar {
-  flex: 1;
-  width: 100%;
-}
-
-.App-navbox {
-  flex: 1;
-  height: 100%;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Jura';
-  background-color: #333;
-  cursor: pointer;
-}
-
-.App-navbox:hover {
-  background-color: black;
-}
-
-.App-navbox.clicked {
-  background: none;
-  cursor: auto;
-}
-
-.indev {
-  align-self: center;
-  margin-top: 40vh;
-  font-weight: bold;
-}
-
-/* Color-animated cover bar */
-
-@property --pos {
-	syntax: '<length-percentage>';
-	initial-value: 0%;
-	inherits: false
-}
-
-#App-coverbar {
-  position:absolute;
-  top:0;
-  left:0;
-  height: 100%;
-  width: 100%;
-  background-color: #333;
-  z-index: -100;
-}
-
-@keyframes colorbar { 0% { --pos: 0 } 90%, 100% { --pos: 100% } }

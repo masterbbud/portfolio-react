@@ -9,8 +9,8 @@ function Resume({ arriveAtPage }) {
     }, [])
 
     return (
-        <div className="indev">
-          This page is in development.
+        <div>
+          Resume Page
         </div>
     );
 }

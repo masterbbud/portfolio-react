@@ -1,0 +1,12 @@
+
+  
+.indev {
+    position: fixed;
+    bottom: 0.5vh;
+    left: 0.5vh;
+    background: #eee;
+    padding: 0.5vh;
+    font-size: 1.5vh;
+    font-weight: bold;
+    width: fit-content;
+}

@@ -7,34 +7,18 @@ import { useEffect } from "react";
 function Header() {
 
     const navigate = useNavigate();
-    const location = useLocation();
-
-    useEffect(() => {
-        // Check if the page is loaded externally (direct URL access)
-        const isExternalNavigation = !location.state || !location.state.fromReactRouter;
-        console.log(location.state);
-        if (document.referrer && document.referrer.length > 0 && document.referrer.startsWith('https://yoursite.com')) {
-            // user came from an internal link
-            console.log("Internal")
-        }
-        else {
-            // user came from a bookmark or an external link
-            console.log(document.referrer);
-            console.log("External")
-        }
-    }, [location]);
 
     function clickHome(event, color, url) {
         let clicked = event.target;
         if (clicked.classList.contains('clicked')) {
+            navigate(url);
             return;
         }
         let elem = document.getElementById('App-coverbar');
-        elem.classList.add("resumeClicked");
         let rect = elem.getBoundingClientRect();
         let x = event.clientX - rect.x;
         let y = event.clientY - rect.y;
-        elem.style.background = `radial-gradient(circle at ${x}px ${y}px, ${color} var(--pos, 0%), #333 0)`
+        elem.style.background = `radial-gradient(circle at ${x}px ${y}px, ${color} var(--pos, 100%), #333 0)`
         elem.style.animation = 'none';
         let a = elem.offsetHeight;
         elem.style.animation = null;

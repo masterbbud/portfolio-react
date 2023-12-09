@@ -9,8 +9,8 @@ function Home({ arriveAtPage }) {
     }, [])
 
     return (
-        <div className="indev">
-          This page is in development.
+        <div>
+          Home Page
         </div>
     );
 }
