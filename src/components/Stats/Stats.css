@@ -1,0 +1,12 @@
+.stat-cards {
+    display: flex;
+    flex-direction: row;
+    height: 15vh;
+}
+
+.stat-card {
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+}

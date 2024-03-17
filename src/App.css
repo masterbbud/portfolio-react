@@ -3,6 +3,21 @@
   src: local('Jura'), url(./fonts/Jura/static/Jura-Medium.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Italic';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-LightItalic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: local('Poppins'), url(./fonts/Poppins/Poppins-Medium.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
   width: 100vw;
@@ -15,4 +30,63 @@
 
 .page-main {
   overflow-y: auto;
+  flex: 1;
+}
+
+.project-header {
+  padding-top: 4vh;
+  font-size: 8vh;
+  font-family: 'Poppins-Bold';
+}
+
+.project-subheader {
+  font-size: calc(2vh + 0.5vw);
+  font-family: 'Poppins-Italic';
+}
+
+.project-background {
+  min-height: 100%;
+  width: 100%;
+  padding: calc(12vw - 2vh);
+  padding-top: 6vw;
+  font-size: 2vh;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+  color: white;
+}
+
+.project-text {
+  margin-top: 4vh;
+}
+
+.project-image {
+  margin-top: 4vh;
+}
+
+.project-image > img {
+  height: calc(30vh + 20vw);
+}
+
+.project-image > div {
+  margin-top: 0.5vh;
+  font-family: 'Poppins-Italic';
+}
+
+.project-mainflow {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+@media (min-width: 1200px) {
+  .project-mainflow {
+    grid-template-columns: 40vw 40vw;
+  }
+  .project-image {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .project-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }

@@ -1,0 +1,12 @@
+.ghostjazz-background {
+    background-color: #379674;
+}
+
+a:link {
+    color: white;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #ddd;
+}

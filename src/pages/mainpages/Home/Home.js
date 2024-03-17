@@ -9,8 +9,11 @@ function Home({ arriveAtPage }) {
     }, [])
 
     return (
-        <div>
-          Home Page
+        <div className="home-background">
+            <div className="home-header">
+                <div>Brandon</div>
+                <div>Faunce</div>
+            </div>
         </div>
     );
 }

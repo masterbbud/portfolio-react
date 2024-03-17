@@ -1,0 +1,6 @@
+.projects-background {
+    background-color: #541c5d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,0 +1,67 @@
+.contact-background {
+    height: 94vh;
+    background: radial-gradient(circle at 100% calc(51vh - 32vw), #165416, #165416 95vw, #333 50vw);
+    background-size: 100% 150%;
+    position: relative;
+    z-index: 10;
+}
+
+.contact-background2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #165416;
+    height: calc(51vh - 32vw);
+    width: 95vw;
+    z-index: -1;
+}
+
+.pre-header {
+    height: 4vh;
+    background-color: rgba(0,0,0,0);
+}
+
+.header {
+    font-size: calc(4vw + 4vh);
+    font-family: 'Poppins-Bold';
+    margin-bottom: 4vh;
+    color: white;
+    background-color: #299b29;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+.contact-card {
+    height: calc(1vw + 4vh);
+    font-size: calc(0.6vw + 2.4vh);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-icon {
+    height: 100%;
+    padding-right: 1.3vh;
+}
+
+.contact-text {
+    font-family: 'Poppins';
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #8edd8e;
+}
+
+a:visited {
+    color: #60a060;
+}

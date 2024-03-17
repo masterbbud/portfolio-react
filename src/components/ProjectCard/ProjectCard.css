@@ -1,0 +1,39 @@
+.project-card {
+    width: 80vw;
+    height: min(20vh, 30vw);
+    margin-top: 2vh;
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins-Bold';
+    color: white;
+    text-align: left;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.projectcard-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2vh;
+}
+
+.projectcard-title {
+    font-size: max(3vw, 3.5vh);
+}
+
+.projectcard-text {
+    font-family: 'Poppins';
+    font-size: max(1.4vw, 2vh);
+    text-overflow: ellipsis;
+    max-height: 100%;
+    flex: 1;
+    overflow: hidden;
+    margin-top: 1vh;
+}
+
+.projectcard-image {
+    height: min(20vh, 30vw);
+    width: min(20vh, 30vw);
+}

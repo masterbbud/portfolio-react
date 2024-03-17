@@ -9,4 +9,5 @@
     font-size: 1.5vh;
     font-weight: bold;
     width: fit-content;
+    z-index: 100;
 }
