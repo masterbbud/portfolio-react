@@ -5,6 +5,7 @@ import Home from './pages/mainpages/Home/Home.js';
 import Contact from './pages/mainpages/Contact/Contact.js';
 import Projects from './pages/mainpages/Projects/Projects.js';
 import Resume from './pages/mainpages/Resume/Resume.js';
+import Playground from './pages/mainpages/Playground/Playground.js';
 
 import GhostJazz from './pages/projects/GhostJazz/GhostJazz.js';
 import TrainedTerrain from './pages/projects/TrainedTerrain/TrainedTerrain.js';
@@ -29,12 +30,18 @@ import BunchNotes from './pages/projects/BunchNotes/BunchNotes.js';
 import Typhon from './pages/projects/Typhon/Typhon.js';
 import InRainbows from './pages/projects/InRainbows/InRainbows.js';
 
+import TwelveTone from './pages/playground/TwelveTone/TwelveTone.js';
+
 import PageNotFound from './pages/other/PageNotFound/PageNotFound.js'
 import Header from './components/Header/Header.js'
 import InDev from './components/InDev/InDev.js'
 
 function App() {
+
   function arriveAtPage(id, headerClass) {
+    if (!document.getElementById(id)) {
+      return;
+    }
     document.getElementById('App-homebox').classList.remove('clicked');
     document.getElementById('App-resumebox').classList.remove('clicked');
     document.getElementById('App-projectsbox').classList.remove('clicked');
@@ -48,8 +55,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
-        <InDev/>
+        { !window.location.pathname.startsWith('/playground') ? <Header/>:null }
+        { !window.location.pathname.startsWith('/playground') ? <InDev/>:null }
         <div className="page-main">
           <Routes>
             <Route path="/" element={<Home arriveAtPage={arriveAtPage} />} />
@@ -78,6 +85,8 @@ function App() {
             <Route path="/projects/bunchnotes" element={<BunchNotes arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/typhon" element={<Typhon arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/inrainbows" element={<InRainbows arriveAtPage={arriveAtPage} />} />
+            <Route path="/playground" element={<Playground arriveAtPage={arriveAtPage} />} />
+            <Route path="/playground/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

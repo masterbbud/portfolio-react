@@ -1,0 +1,46 @@
+.twelvetone-background {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.twelvetone-left {
+    flex: 1;
+    height: 100%;
+}
+.twelvetone-right {
+    flex: 1;
+    height: 100%;
+}
+
+.twelvetone-grid {
+    border: 2px solid black;
+    width: 30em;
+    height: 30em;
+}
+
+.twelvetone-gridrow {
+    display: flex;
+    flex-direction: row;
+    height: 2.5em;
+}
+
+.twelvetone-gridcell {
+    width: 2.5em;
+    height: 2.5em;
+    outline: 1px solid black;
+    position: relative;
+}
+
+.twelvetone-cellnumber {
+    position: absolute;
+    font-size: 14px;
+    right: 4px;
+    bottom: 4px;
+}
+.twelvetone-cellnote {
+    position: absolute;
+    font-size: 18px;
+    left: 4px;
+    top: 0;
+}

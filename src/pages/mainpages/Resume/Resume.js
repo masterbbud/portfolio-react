@@ -1,9 +1,16 @@
 import './Resume.css';
 import '../../../App.css';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
+
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { useEffect } from 'react';
-import { pdfjs } from 'react-pdf';
 import imgUrl from '../../../resources/resume.pdf';
+
+
+// TODO fix issue where PDF file does not display on CDN
+
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
@@ -14,7 +21,7 @@ function Resume({ arriveAtPage }) {
 
     useEffect(() => {
         arriveAtPage('App-resumebox', 'clickedResume');
-    }, [])
+    })
 
     function downloadResume() { 
         const pdfUrl = imgUrl;
