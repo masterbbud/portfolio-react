@@ -212,20 +212,21 @@ function TwelveTone({ arriveAtPage }) {
                 <div className="twelvetone-right">
                     <div className="twelvetone-gridwrapper">
                         <div className="twelvetone-gridhbox">
-                            {[...Array(12).keys()].map(i => 
+                            {gridRows.map((v, i) => 
                                 <div className="twelvetone-gridrowdecorator" key={i}
                                 style={
                                     {fontWeight: selectedRow == `I ${i}` ? 'bold' : 'normal'}}
                                 onClick={() => setSelectedRow(selectedRow != `I ${i}` ? `I ${i}` : null)}>
                                     <div className="twelvetone-decoratorcontent">
-                                        ↓I<sub>{i}</sub>
+                                        ↓I<sub>{gridRows[0][i]}</sub> 
+                                        {/* Why isn't this working??? */}
                                     </div>
                                 </div>
                             )}
                         </div>
                         <div className="twelvetone-middlewrapperrow">
                             <div className="twelvetone-gridvbox">
-                                {[...Array(12).keys()].map(i => 
+                                {gridRows.map((v, i) => 
                                     <div className="twelvetone-gridrowdecorator" key={i}
                                     style={
                                         {fontWeight: selectedRow == `P ${i}` ? 'bold' : 'normal'}}
@@ -233,7 +234,7 @@ function TwelveTone({ arriveAtPage }) {
                                         <div className="twelvetone-decoratorcontent">
                                             <div className="twelvetone-gridcontentvertical">
                                                 <div>→</div>
-                                                <div>P<sub>{i}</sub></div>
+                                                <div>P<sub>{gridRows[i][0]}</sub></div>
                                             </div>
                                         </div>
                                     </div>
@@ -254,7 +255,7 @@ function TwelveTone({ arriveAtPage }) {
                                 : null}
                             </div>
                             <div className="twelvetone-gridvbox">
-                                {[...Array(12).keys()].map(i => 
+                                {gridRows.map((v, i) => 
                                     <div className="twelvetone-gridrowdecorator" key={i}
                                     style={
                                         {fontWeight: selectedRow == `R ${i}` ? 'bold' : 'normal'}}
@@ -262,7 +263,7 @@ function TwelveTone({ arriveAtPage }) {
                                         <div className="twelvetone-decoratorcontent">
                                             <div className="twelvetone-gridcontentvertical">
                                                 <div>←</div>
-                                                <div>R<sub>{i}</sub></div>
+                                                <div>R<sub>{gridRows[i][0]}</sub></div>
                                             </div>
                                         </div>
                                     </div>
@@ -271,13 +272,13 @@ function TwelveTone({ arriveAtPage }) {
                         </div>
                         
                         <div className="twelvetone-gridhbox">
-                            {[...Array(12).keys()].map(i => 
+                            {gridRows.map((v, i) => 
                                 <div className="twelvetone-gridrowdecorator" key={i}
                                 style={
                                     {fontWeight: selectedRow == `RI ${i}` ? 'bold' : 'normal'}}
                                 onClick={() => setSelectedRow(selectedRow != `RI ${i}` ? `RI ${i}` : null)}>
                                     <div className="twelvetone-decoratorcontent">
-                                        ↑RI<sub>{i}</sub>
+                                        ↑RI<sub>{gridRows[0][i]}</sub>
                                     </div>
                                 </div>
                             )}
