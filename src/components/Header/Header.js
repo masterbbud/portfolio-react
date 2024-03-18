@@ -31,7 +31,7 @@ function Header() {
 
             </div>
             <div className="App-clickables">
-                <div onClick={(event) => clickHome(event, '#ffa500', '/')} className="App-navbox" id="App-homebox">
+                <div onClick={(event) => clickHome(event, '#ff4c00', '/')} className="App-navbox" id="App-homebox">
                     Home
                 </div>
                 <div onClick={(event) => clickHome(event, '#43a5ff', '/resume')} className="App-navbox" id="App-resumebox">
