@@ -163,6 +163,38 @@
     line-height: 0.8em;
 }
 
+.twelvetone-dividedgrid > :nth-child(4n + 1) > div {
+    box-shadow: 0 2px 0 #000 inset;
+}
+
+.twelvetone-dividedgrid > :nth-child(1) > div {
+    box-shadow: none;
+}
+
+.twelvetone-dividedgrid > .twelvetone-gridrow > :nth-child(4n + 1) {
+    box-shadow: 2px 0 0 #000 inset;
+}
+
+.twelvetone-dividedgrid > .twelvetone-gridrow > :nth-child(1) {
+    box-shadow: none;
+}
+
+.twelvetone-dividedgrid > :nth-child(4n + 1) > :nth-child(4n + 1) {
+    box-shadow: 2px 0 0 #000 inset, 0 2px 0 #000 inset;
+}
+
+.twelvetone-dividedgrid > :nth-child(1) > :nth-child(4n + 1) {
+    box-shadow: 2px 0 0 #000 inset;
+}
+
+.twelvetone-dividedgrid > :nth-child(4n + 1) > :nth-child(1) {
+    box-shadow: 0 2px 0 #000 inset;
+}
+
+.twelvetone-dividedgrid > :nth-child(1) > :nth-child(1) {
+    box-shadow: none;
+}
+
 @media (max-width: 1200px) {
     .twelvetone-content {
         flex-direction: column;

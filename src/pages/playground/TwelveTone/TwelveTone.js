@@ -18,6 +18,7 @@ function TwelveTone({ arriveAtPage }) {
 
     const [sequence, setSequence] = useState("01392e4t7856");
     const [sequenceInput, setSequenceInput] = useState("01392e4t7856");
+    const [thirdDivision, setThirdDivison] = useState(false);
 
     const [selectedRow, setSelectedRow] = useState(null);
     
@@ -174,6 +175,10 @@ function TwelveTone({ arriveAtPage }) {
                             <div>Monochrome: </div>
                             <input type="checkbox" defaultChecked={greyColorMode} onInput={e => setGreyColorMode(e.target.checked)}/>
                         </div>
+                        <div className="twelvetone-field">
+                            <div>Divide Grid: </div>
+                            <input type="checkbox" defaultChecked={thirdDivision} onInput={e => setThirdDivison(e.target.checked)}/>
+                        </div>
                         <div style={{marginTop: '1em', display: 'flex'}}>
                             <button className="playground-primarybutton twelvetone-renderbutton" onClick={renderSequence}>Render</button>
                         </div>
@@ -219,7 +224,6 @@ function TwelveTone({ arriveAtPage }) {
                                 onClick={() => setSelectedRow(selectedRow != `I ${i}` ? `I ${i}` : null)}>
                                     <div className="twelvetone-decoratorcontent">
                                         ↓I<sub>{gridRows[0][i]}</sub> 
-                                        {/* Why isn't this working??? */}
                                     </div>
                                 </div>
                             )}
@@ -240,7 +244,7 @@ function TwelveTone({ arriveAtPage }) {
                                     </div>
                                 )}
                             </div>
-                            <div className="twelvetone-grid">
+                            <div className={`${thirdDivision ? "twelvetone-dividedgrid " : ""}twelvetone-grid`}>
                                 { isValidSequence() ?
                                 gridRows.map((row, i) => 
                                     <div className="twelvetone-gridrow" key={i}>
