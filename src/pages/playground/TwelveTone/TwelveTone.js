@@ -1,10 +1,15 @@
 import './TwelveTone.css';
 import '../../../App.css';
+import '../Playground.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function TwelveTone({ arriveAtPage }) {
 
+    const navigate = useNavigate();
+
     const notesArray = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+    const possibleValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 't', 'e'];
 
     const [gridRows, setGridRows] = useState([]);
     const [centralPitch, setCentralPitch] = useState("E");
@@ -12,11 +17,14 @@ function TwelveTone({ arriveAtPage }) {
     const [greyColorMode, setGreyColorMode] = useState(false);
 
     const [sequence, setSequence] = useState("01392e4t7856");
+    const [sequenceInput, setSequenceInput] = useState("01392e4t7856");
+
+    const [selectedRow, setSelectedRow] = useState(null);
     
     useEffect(() => {
         arriveAtPage('App-playgroundbox', 'clickedPlayground');
         generateGridRows();
-    }, [])
+    }, [sequence])
 
     function generateGridRows() {
         let rows = [];
@@ -31,6 +39,17 @@ function TwelveTone({ arriveAtPage }) {
             rows.push(newseq);
         }
         setGridRows(rows);
+    }
+
+    function generateRandomSequence() {
+        let shuffled = possibleValues
+            .map(value => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value)
+            .join('');
+        setSequenceInput(shuffled);
+        setSequence(shuffled);
+        return shuffled;
     }
 
     function getIntSequence() {
@@ -62,7 +81,20 @@ function TwelveTone({ arriveAtPage }) {
         return notesArray[(i + notesArray.indexOf(centralPitch) + 12) % 12];
     }
 
-    function getColorFor(i) {
+    function getColorFor(y, x, i) {
+        if (selectedRow != null) {
+            let [type, index] = selectedRow.split(' ');
+            if (type == 'I' || type == 'RI') {
+                if (x != index) {
+                    return '#FFFFFF';
+                }
+            }
+            else {
+                if (y != index) {
+                    return '#FFFFFF';
+                }
+            }
+        }
         let n = i;
         if (!indexColorMode) {
             n = (i + notesArray.indexOf(centralPitch) + 12) % 12;
@@ -104,30 +136,164 @@ function TwelveTone({ arriveAtPage }) {
     }
 
     function isValidSequence() {
+        return sequence.length == 12 && ![...sequence].some(e => !possibleValues.includes(e));
+    }
 
+    function renderSequence() {
+
+        setSequence(sequenceInput);
     }
 
     return (
         <div className="twelvetone-background">
-            <div className="twelvetone-left">
-                
+            <div className="twelvetone-header">
+                Twelve-Tone Grid Generator
             </div>
-            <div className="twelvetone-right">
-                <div className="twelvetone-grid">
-                    {gridRows.map((row, i) => 
-                        <div className="twelvetone-gridrow" key={i}>
-                            {row.map((obj, n) =>
-                                <div className="twelvetone-gridcell" key={n} style={{backgroundColor: getColorFor(obj)}}>
-                                    <div className="twelvetone-cellnote">{getNoteFor(obj)}</div>
-                                    <div className="twelvetone-cellnumber">{getStringFor(obj)}</div>
+            <div className="twelvetone-content">
+                <div className="twelvetone-left">
+                    <div className="twelvetone-fields">
+                        <div className="twelvetone-field twelvetone-sequence" style={{marginBottom: '1em'}}>
+                            <div>Sequence: </div>
+                            <div className="twelvetone-paireditems">
+                                <input value={sequenceInput} onInput={e => setSequenceInput(e.target.value)} placeholder="0123456789te"/>
+                                <button className="playground-secondarybutton" onClick={generateRandomSequence}>Randomize</button>
+                            </div>
+                        </div>
+                        <div className="twelvetone-field">
+                            <div>Central Pitch (0): </div>
+                            <select type="dropdown" value={centralPitch} onInput={e => setCentralPitch(e.target.value)} placeholder="0123456789te">
+                                {notesArray.map(item => 
+                                    <option name={item} key={item}> {item}</option>)}
+                            </select>
+                        </div>
+                        <div className="twelvetone-field">
+                            <div>Color by Degree: </div>
+                            <input type="checkbox" defaultChecked={indexColorMode} onInput={e => setIndexColorMode(e.target.checked)}/>
+                        </div>
+                        <div className="twelvetone-field">
+                            <div>Monochrome: </div>
+                            <input type="checkbox" defaultChecked={greyColorMode} onInput={e => setGreyColorMode(e.target.checked)}/>
+                        </div>
+                        <div style={{marginTop: '1em', display: 'flex'}}>
+                            <button className="playground-primarybutton twelvetone-renderbutton" onClick={renderSequence}>Render</button>
+                        </div>
+                        {
+                            (new Set(sequence)).size !== sequence.length ? 
+                            <div className="twelvetone-inlinealert">
+                                <div className="inline-icon warning-icon">!</div>
+                                <div className="twelvetone-renderwarning">
+                                    <b>Warning:</b> Your sequence uses duplicate note names. A proper 12-tone sequence uses each degree exactly once.
+                                </div>
+                            </div>
+                            : null
+                        }
+                        {
+                            sequence.length != 12 ?
+                            <div className="twelvetone-inlinealert">
+                                <div className="inline-icon error-icon">X</div>
+                                <div className="twelvetone-rendererror">
+                                    <b>Error:</b> A twelve-tone sequence must have exactly 12 notes.
+                                </div>
+                            </div>
+                            : null
+                        }
+                        {
+                            [...sequence].some(e => !possibleValues.includes(e)) ?
+                            <div className="twelvetone-inlinealert">
+                                <div className="inline-icon error-icon">X</div>
+                                <div className="twelvetone-rendererror">
+                                    <b>Error:</b> Only use notes of the digits 0-9, t, or e.
+                                </div>
+                            </div>
+                            : null
+                        }
+                    </div>
+                </div>
+                <div className="twelvetone-right">
+                    <div className="twelvetone-gridwrapper">
+                        <div className="twelvetone-gridhbox">
+                            {[...Array(12).keys()].map(i => 
+                                <div className="twelvetone-gridrowdecorator" key={i}
+                                style={
+                                    {fontWeight: selectedRow == `I ${i}` ? 'bold' : 'normal'}}
+                                onClick={() => setSelectedRow(selectedRow != `I ${i}` ? `I ${i}` : null)}>
+                                    <div className="twelvetone-decoratorcontent">
+                                        ↓I<sub>{i}</sub>
+                                    </div>
                                 </div>
                             )}
                         </div>
-                    )}
+                        <div className="twelvetone-middlewrapperrow">
+                            <div className="twelvetone-gridvbox">
+                                {[...Array(12).keys()].map(i => 
+                                    <div className="twelvetone-gridrowdecorator" key={i}
+                                    style={
+                                        {fontWeight: selectedRow == `P ${i}` ? 'bold' : 'normal'}}
+                                    onClick={() => setSelectedRow(selectedRow != `P ${i}` ? `P ${i}` : null)}>
+                                        <div className="twelvetone-decoratorcontent">
+                                            <div className="twelvetone-gridcontentvertical">
+                                                <div>→</div>
+                                                <div>P<sub>{i}</sub></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="twelvetone-grid">
+                                { isValidSequence() ?
+                                gridRows.map((row, i) => 
+                                    <div className="twelvetone-gridrow" key={i}>
+                                        {row.map((obj, n) =>
+                                            <div className="twelvetone-gridcell" key={n} style={{backgroundColor: getColorFor(i, n, obj)}}>
+                                                <div className="twelvetone-cellnote">{getNoteFor(obj)}</div>
+                                                <div className="twelvetone-cellnumber">{getStringFor(obj)}</div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )
+                                : null}
+                            </div>
+                            <div className="twelvetone-gridvbox">
+                                {[...Array(12).keys()].map(i => 
+                                    <div className="twelvetone-gridrowdecorator" key={i}
+                                    style={
+                                        {fontWeight: selectedRow == `R ${i}` ? 'bold' : 'normal'}}
+                                    onClick={() => setSelectedRow(selectedRow != `R ${i}` ? `R ${i}` : null)}>
+                                        <div className="twelvetone-decoratorcontent">
+                                            <div className="twelvetone-gridcontentvertical">
+                                                <div>←</div>
+                                                <div>R<sub>{i}</sub></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        
+                        <div className="twelvetone-gridhbox">
+                            {[...Array(12).keys()].map(i => 
+                                <div className="twelvetone-gridrowdecorator" key={i}
+                                style={
+                                    {fontWeight: selectedRow == `RI ${i}` ? 'bold' : 'normal'}}
+                                onClick={() => setSelectedRow(selectedRow != `RI ${i}` ? `RI ${i}` : null)}>
+                                    <div className="twelvetone-decoratorcontent">
+                                        ↑RI<sub>{i}</sub>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
+                
+            </div>
+            <div className="playground-clickmore">
+                <u onClick={() => window.location.href = "/projects/twelvetone"}>Interested in the application? Click to read more.</u>
             </div>
         </div>
     );
 }
+
+// https://en.wikipedia.org/wiki/Twelve-tone_technique
+// https://musictheory.pugetsound.edu/mt21c/section-195.html
 
 export default TwelveTone;

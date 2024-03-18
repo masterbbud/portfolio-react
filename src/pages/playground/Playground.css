@@ -1,0 +1,104 @@
+.playground-primarybutton {
+    user-select: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.25em 1em;
+    border-radius: 5px;
+    padding: 0 1em;
+    color: white;
+    font-size: 1.5em;
+    background-color: #498af2;
+}
+
+.playground-primarybutton:hover {
+    background-color: #3c77d5;
+}
+
+.playground-secondarybutton {
+    user-select: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.25em 1em;
+    font-size: 0.85em;
+    background-color: #e9e9e9;
+}
+
+.playground-secondarybutton:hover {
+    background-color: #d4d4d4;
+}
+
+.playground-clickmore {
+    display: flex;
+    justify-content: end;
+    text-align: end;
+    padding-right: 10px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.playground-clickmore > * {
+    width: max-content;
+    cursor: pointer;
+    user-select: none;
+}
+
+.playground-clickmore > *:hover {
+    color: #666;
+}
+
+input {
+    border: 1px solid black;
+    height: 1.5em;
+    font-size: 1em;
+    padding: 0 4px;
+    border: 1px solid black;
+    border-radius: 0;
+    font-family: Poppins;
+}
+
+select {
+    border: 1px solid black;
+}
+
+input:hover {
+    border: 1px solid #666;
+}
+
+select:hover {
+    border: 1px solid #666;
+}
+
+input[type=checkbox] {
+    height: 1.5em;
+    width: 1.5em;
+    appearance: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+}
+
+input[type=checkbox]:checked {
+    background-color: #498af2;
+    border: none;
+}
+
+input[type=checkbox]:checked:hover {
+    background-color: #3c77d5;
+    border: none;
+}
+
+input[type=checkbox]:checked::before {
+    font-family: Arial;
+    content: "✓";
+    color: white;
+    text-align: center;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+
+}

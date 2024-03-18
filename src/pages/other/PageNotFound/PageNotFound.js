@@ -3,8 +3,8 @@ import '../../../App.css';
 
 function PageNotFound() {
     return (
-        <div className="indev">
-          We couldn't find your page.
+        <div className="notfound">
+          <div>We couldn't find your page.</div>
         </div>
     );
 }

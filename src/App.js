@@ -35,10 +35,14 @@ import TwelveTone from './pages/playground/TwelveTone/TwelveTone.js';
 import PageNotFound from './pages/other/PageNotFound/PageNotFound.js'
 import Header from './components/Header/Header.js'
 import InDev from './components/InDev/InDev.js'
+import { useEffect, useState } from 'react';
 
 function App() {
 
+  const [update, forceUpdate] = useState(0);
+
   function arriveAtPage(id, headerClass) {
+    forceUpdate(update + 1);
     if (!document.getElementById(id)) {
       return;
     }
@@ -52,10 +56,11 @@ function App() {
     elem.classList.remove(...elem.classList);
     elem.classList.add(headerClass);
   }
+  
   return (
     <BrowserRouter>
       <div className="App">
-        { !window.location.pathname.startsWith('/playground') ? <Header/>:null }
+        { !window.location.pathname.startsWith('/playground') ? <Header/> :null }
         { !window.location.pathname.startsWith('/playground') ? <InDev/>:null }
         <div className="page-main">
           <Routes>

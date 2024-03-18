@@ -1,16 +1,26 @@
 .twelvetone-background {
+    font-family: Poppins;
+}
+
+.twelvetone-header {
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+.twelvetone-content {
+    padding: 60px;
     display: flex;
     flex-direction: row;
-    height: 100vh;
+
 }
 
 .twelvetone-left {
     flex: 1;
-    height: 100%;
+    padding-left: 40px;
 }
 .twelvetone-right {
     flex: 1;
-    height: 100%;
 }
 
 .twelvetone-grid {
@@ -34,13 +44,159 @@
 
 .twelvetone-cellnumber {
     position: absolute;
-    font-size: 14px;
+    font-size: 0.8em;
     right: 4px;
-    bottom: 4px;
+    bottom: 0;
+    user-select: none;
 }
 .twelvetone-cellnote {
     position: absolute;
-    font-size: 18px;
+    font-size: 1.2em;
     left: 4px;
     top: 0;
+}
+
+.twelvetone-fields {
+    border: 2px solid black;
+    width: min-content;
+    padding: 40px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.twelvetone-field {
+    display: flex;
+    height: 2em;
+    flex-direction: row;
+    align-items: center;
+    width: max-content;
+}
+
+.twelvetone-field > select {
+    height: 1.5em;
+    font-size: 1em;
+    padding: 0 4px;
+    border-radius: 0;
+    font-family: Poppins;
+}
+
+.twelvetone-field > * {
+    margin-left: 10px;
+}
+
+.twelvetone-field :nth-child(1) {
+    margin-left: 0;
+}
+
+.twelvetone-renderwarning {
+    width: 50%;
+    color: #deb215;
+    text-align: left;
+}
+
+.twelvetone-rendererror {
+    width: 50%;
+    color: #f8471a;
+    text-align: left;
+}
+
+.twelvetone-inlinealert {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+.twelvetone-paireditems {
+    display: flex;
+}
+
+.twelvetone-paireditems > button {
+    margin-left: 10px;
+}
+
+.twelvetone-gridwrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.twelvetone-gridhbox {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2.5em;
+    width: fit-content;
+}
+
+.twelvetone-gridrowdecorator {
+    height: 2.5em;
+    width: 2.5em;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.twelvetone-decoratorcontent {
+    width: min-content;
+}
+
+.twelvetone-gridrowdecorator:hover {
+    color: #666;
+}
+
+.twelvetone-middlewrapperrow {
+    display: flex;
+    flex-direction: row;
+}
+
+.twelvetone-gridvbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.twelvetone-gridcontentvertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.twelvetone-gridcontentvertical > div {
+    line-height: 0.8em;
+}
+
+@media (max-width: 1200px) {
+    .twelvetone-content {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .twelvetone-left {
+        padding: 0;
+    }
+    .twelvetone-fields {
+        padding: 10px;
+        width: 100%;
+        font-size: 14px;
+    }
+    .twelvetone-right {
+        margin-top: 40px;
+    }
+    .twelvetone-gridwrapper {
+        font-size: 12px;
+    }
+    .twelvetone-sequence {
+        width: min-content;
+        flex-wrap: wrap;
+        height: 5em;
+    }
+    .twelvetone-sequence > div{
+        margin-left: 0;
+    }
+    .twelvetone-paireditems > input {
+        width: 8em;
+    }
+    .twelvetone-renderwarning {
+        width: 100%;
+    }
+    .twelvetone-rendererror {
+        width: 100%;
+    }
 }
