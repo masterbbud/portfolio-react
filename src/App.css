@@ -37,6 +37,8 @@
   padding-top: 4vh;
   font-size: 8vh;
   font-family: 'Poppins-Bold';
+  line-height: 1;
+  margin-bottom: 0.5em;
 }
 
 .project-subheader {
