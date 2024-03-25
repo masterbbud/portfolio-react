@@ -18,6 +18,8 @@ function TwelveTone({ arriveAtPage }) {
 
     const [sequence, setSequence] = useState("01392e4t7856");
     const [sequenceInput, setSequenceInput] = useState("01392e4t7856");
+    const [searchValue, setSearchValue] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
     const [thirdDivision, setThirdDivison] = useState(false);
 
     const [selectedRow, setSelectedRow] = useState(null);
@@ -82,6 +84,13 @@ function TwelveTone({ arriveAtPage }) {
         return notesArray[(i + notesArray.indexOf(centralPitch) + 12) % 12];
     }
 
+    function getIndexFromNote(n) {
+        if (notesArray.indexOf(n) == -1) {
+            return null;
+        }
+        return (notesArray.indexOf(centralPitch) - notesArray.indexOf(n) + 12) % 12;
+    }
+
     function getColorFor(y, x, i) {
         if (selectedRow != null) {
             let [type, index] = selectedRow.split(' ');
@@ -94,6 +103,11 @@ function TwelveTone({ arriveAtPage }) {
                 if (y != index) {
                     return '#FFFFFF';
                 }
+            }
+        }
+        else if (searchValue != "") {
+            if (!searchResults.some(tuple => tuple[0] == x && tuple[1] == y)) {
+                return '#FFFFFF';
             }
         }
         let n = i;
@@ -134,6 +148,65 @@ function TwelveTone({ arriveAtPage }) {
                 "#C21460"
             ][n];
         }
+    }
+
+    function setSearch(value) {
+        setSearchValue(value);
+
+        if (gridRows.length < 12) {
+            return;
+        }
+
+        if (value == "") {
+            setSearchResults([]);
+            return;
+        }
+
+        let searchNums = value.split(' ').filter(m => m != "").map(n => getIndexFromNote(n));
+        if (searchNums.some(el => el == null)) {
+            return;
+        }
+        
+        let results = [];
+        for (let i = 0; i < 12; i++) {
+            for (let j = 0; j < 12; j++) {
+                if (gridRows[i][j] == searchNums[0]) {
+                    let dirs = [true, true, true, true]
+                    for (let c = 1; c < searchNums.length; c++) {
+                        if (gridRows.length <= i + c || gridRows[i + c][j] != searchNums[c]) {
+                            dirs[0] = false;
+                        }
+                        if (i - c < 0 || gridRows[i - c][j] != searchNums[c]) {
+                            dirs[1] = false;
+                        }
+                        if (gridRows[0].length <= j + c || gridRows[i][j + c] != searchNums[c]) {
+                            dirs[2] = false;
+                        }
+                        if (j - c < 0 || gridRows[i][j - c] != searchNums[c]) {
+                            dirs[3] = false;
+                        }
+                    }
+                    for (let c = 1; c < searchNums.length; c++) {
+                        if (dirs[0]) {
+                            results.push([i + c, j]);
+                        }
+                        if (dirs[1]) {
+                            results.push([i - c, j]);
+                        }
+                        if (dirs[2]) {
+                            results.push([i, j + c]);
+                        }
+                        if (dirs[3]) {
+                            results.push([i, j - c]);
+                        }
+                    }
+                    if (dirs[0] || dirs[1] || dirs[2] || dirs[3]) {
+                        results.push([i, j]);
+                    }
+                }
+            }
+        }
+        setSearchResults(results);
     }
 
     function isValidSequence() {
@@ -289,7 +362,16 @@ function TwelveTone({ arriveAtPage }) {
                         </div>
                     </div>
                 </div>
-                
+                <div className="twelvetone-searchbar">
+                    <div className="twelvetone-searchwrapper">
+                        <div className="twelvetone-searchheader">
+                            Search for a sequence
+                        </div>
+                        <div className="twelvetone-search">
+                            <input value={searchValue} onInput={e => setSearch(e.target.value)} placeholder="A B D# F"/>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="playground-clickmore">
                 <u onClick={() => window.location.href = "/projects/twelvetone"}>Interested in the application? Click to read more.</u>
