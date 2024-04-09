@@ -1,6 +1,7 @@
 import './Home.css';
 import '../../../App.css';
 import { useEffect } from 'react';
+import Splatter from '../../../components/Splatter/Splatter.js';
 
 function Home({ arriveAtPage }) {
 
@@ -13,6 +14,7 @@ function Home({ arriveAtPage }) {
             <div className="home-header">
                 <div>Brandon</div>
                 <div>Faunce</div>
+                <Splatter seed={1} color="#fff"></Splatter>
             </div>
         </div>
     );
