@@ -31,6 +31,7 @@ import Typhon from './pages/projects/Typhon/Typhon.js';
 import InRainbows from './pages/projects/InRainbows/InRainbows.js';
 
 import TwelveTone from './pages/playground/TwelveTone/TwelveTone.js';
+import Fourier from './pages/playground/Fourier/Fourier.js';
 
 import PageNotFound from './pages/other/PageNotFound/PageNotFound.js'
 import Header from './components/Header/Header.js'
@@ -92,6 +93,7 @@ function App() {
             <Route path="/projects/inrainbows" element={<InRainbows arriveAtPage={arriveAtPage} />} />
             <Route path="/playground" element={<Playground arriveAtPage={arriveAtPage} />} />
             <Route path="/playground/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
+            <Route path="/playground/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
