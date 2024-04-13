@@ -1,3 +1,7 @@
+.fourier-background {
+    padding-top: 2em;
+}
+
 .fourier-graph {
     border: 2px solid black;
     padding: 30px;
@@ -35,4 +39,67 @@
 
 .fourier-graph-ylabel > p {
     margin: 0;
+}
+
+.fourier-realimaginary {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.fourier-magphase {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.fourier-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.fourier-arrayinput {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.fourier-arrayrow {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.fourier-arrayrow > div {
+    border: 1px solid black;
+    border-radius: 4px;
+    flex: 1;
+    background-color: white;
+}
+
+.fourier-arrayn {
+    margin-right: 10px;
+}
+
+.fourier-firstrow {
+    margin-top: 2em;
+    padding-bottom: 5px;
+    border-bottom: 2px solid black;
+}
+
+.fourier-functionheader {
+    margin: 1em;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+.fourier-togglefrequency {
+    margin-bottom: 1em;
+}
+
+.fourier-functioninput {
+    margin-top: 2em;
+    margin-bottom: 0.25em;
+    width: 100%;
+    box-sizing: border-box;
 }

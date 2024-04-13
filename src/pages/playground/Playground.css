@@ -46,6 +46,21 @@
     color: #666;
 }
 
+.playground-labeledinput {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.25em;
+}
+
+.playground-labeledinput > input {
+    margin-left: 0.5em;
+    flex: 1;
+}
+
+.playground-labeledinput > span {
+    width: max-content;
+}
+
 input {
     border: 1px solid black;
     height: 1.5em;

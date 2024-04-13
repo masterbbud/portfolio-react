@@ -14,7 +14,7 @@ function Home({ arriveAtPage }) {
             <div className="home-header">
                 <div>Brandon</div>
                 <div>Faunce</div>
-                <Splatter seed={1} color="#fff"></Splatter>
+                {/* <Splatter seed={1} color="#fff"></Splatter> */}
             </div>
         </div>
     );
