@@ -73,14 +73,9 @@ function Fourier() {
 
     function fourierTransform(func, N, delta) {
         return (x) => {
-            let sum = 0
-            for (let i = 0; i < N; i++) {
-                sum += func(i)[0]*Math.cos(2*Math.PI*(i)*x/N);
-            }
-            //[...Array(N).keys()].forEach(n => console.log(n, func(n)[0]*Math.cos(2*Math.PI*(n)*x/N)))
             return [
-                [...Array(N).keys()].reduce((a, n) => a + func(n)[0]*Math.cos(2*Math.PI*(n)*x/N) + func(n)[1]*Math.sin(2*Math.PI*(n)*x/N)),
-                [...Array(N).keys()].reduce((a, n) => a - func(n)[0]*Math.sin(2*Math.PI*(n)*x/N) + func(n)[1]*Math.cos(2*Math.PI*(n)*x/N))
+                Math.pow(N, -1/2) * [...Array(N).keys()].reduce((a, n) => a + func(n)[0]*Math.cos(2*Math.PI*(n)*x/N) + func(n)[1]*Math.sin(2*Math.PI*(n)*x/N)),
+                Math.pow(N, -1/2) * [...Array(N).keys()].reduce((a, n) => a - func(n)[0]*Math.sin(2*Math.PI*(n)*x/N) + func(n)[1]*Math.cos(2*Math.PI*(n)*x/N))
             ]
         }
     }
