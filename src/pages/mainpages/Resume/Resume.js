@@ -6,6 +6,7 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { useEffect } from 'react';
 import imgUrl from '../../../resources/resume.pdf';
+import pngUrl from '../../../resources/resume.png';
 
 
 // TODO fix issue where PDF file does not display on CDN
@@ -21,7 +22,7 @@ function Resume({ arriveAtPage }) {
 
     useEffect(() => {
         arriveAtPage('App-resumebox', 'clickedResume');
-    })
+    }, [])
 
     function downloadResume() { 
         const pdfUrl = imgUrl;
@@ -33,15 +34,27 @@ function Resume({ arriveAtPage }) {
         document.body.removeChild(link);
     }
 
+    function hoverCircle(event) {
+        console.log(event)
+        ///event.target.classList
+    }
+
     // THOUGHT: add horiziontal bar to "See my Resume" text
 
     return (
         <div className="resumepage-background">
+            <div className="resume-circles-wrapper">
+                <div className="resume-circles">
+                    <div className="resume-circlerow">
+                    {[...Array(100)].map(((e, i) => <div key={i} className="resume-circle" onMouseEnter={hoverCircle}></div>))}
+
+                    </div>
+                </div>
+            </div>
+            
             <div className="resume-background">
                 <div className="embed-container">
-                    <Document file={imgUrl}>
-                        <Page pageNumber={1} scale={5} renderTextLayer={false} renderAnnotationLayer={false}/>
-                    </Document>
+                    <img style={{height: "100%"}} src={pngUrl}></img>
                 </div>
                 
                 <div className="resume-things">

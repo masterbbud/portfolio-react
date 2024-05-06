@@ -9,6 +9,8 @@ function GhostJazz({ arriveAtPage }) {
     useEffect(() => {
         arriveAtPage('App-projectsbox', 'clickedProjects');
     }, [])
+    
+    // TODO add more page margins
 
     return (
         <div className="project-wrapper">

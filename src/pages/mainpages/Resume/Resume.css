@@ -106,3 +106,24 @@
     width: min-content !important;
     --scale-factor: auto !important;
 }
+
+.resume-circles-wrapper {
+    position: relative;
+}
+
+.resume-circles {
+    position: absolute;
+}
+
+.resume-circlerow {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.resume-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+}

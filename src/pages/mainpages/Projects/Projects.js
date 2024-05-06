@@ -16,6 +16,9 @@ import wordsUrl from '../../projects/Words/icon.png';
 import rainbowsUrl from '../../projects/InRainbows/icon.png';
 import comixUrl from '../../projects/Comix/icon.png';
 import storeUrl from '../../projects/SurpriseMeStore/icon.png';
+import ideaCardUrl from '../../projects/IDEACard/icon.png';
+import raspiUrl from '../../projects/RasPiDisplay/icon.png';
+import coursevisionUrl from '../../projects/RITCourseVision/icon.png';
 
 import proceduralArtUrl from '../../projects/ProceduralArt/icon.png';
 
@@ -49,6 +52,21 @@ function Projects({ arriveAtPage }) {
           <ProjectCard title="BunchNotes" description="This is BunchNotes" image={bunchnotesUrl} url="bunchnotes" color="#649fcb"/>
           <ProjectCard title="Typhon" description="This is Typhon" image={typhonUrl} url="typhon" color="#08382a"/>
           <ProjectCard title="InRainbows" description="This is In Rainbows" image={rainbowsUrl} url="inrainbows" color="#430806"/>
+          <ProjectCard title="IDEA Card" description="This is IDEA Card" image={ideaCardUrl} url="ideacard" color="#32435f"/>
+          <ProjectCard title="RasPi Display" description="This is RasPi Display" image={raspiUrl} url="raspidisplay" color="#c15d1b"/>
+          <ProjectCard title="Resweet" description="This is Resweet" image={simScrapeUrl} url="resweet" color="#22401b"/>
+          <ProjectCard title="RIT CourseVision" description="This is RIT CourseVision" image={coursevisionUrl} url="ritcoursevision" color="#f76902"/>
+          <ProjectCard title="Scale Synthesis" description="This is Scale Synthesis" image={simScrapeUrl} url="scalesynthesis" color="#22401b"/>
+          <ProjectCard title="TwelveTone" description="This is TwelveTone" image={simScrapeUrl} url="twelvetone" color="#22401b"/>
+          <ProjectCard title="Fourier" description="This is Fourier" image={simScrapeUrl} url="fourier" color="#22401b"/>
+
+            {/* <Route path="/projects/ideacard" element={<IDEACard arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/raspidisplay" element={<RasPiDisplay arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/resweet" element={<Resweet arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/ritcoursevision" element={<RITCourseVision arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/scalesynthesis" element={<ScaleSynthesis arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} /> */}
         </div>
     );
 }

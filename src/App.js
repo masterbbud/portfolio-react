@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, ScrollRestoration } from 'react-router-dom';
 import Home from './pages/mainpages/Home/Home.js';
 import Contact from './pages/mainpages/Contact/Contact.js';
 import Projects from './pages/mainpages/Projects/Projects.js';
@@ -29,6 +29,11 @@ import Comix from './pages/projects/Comix/Comix.js';
 import BunchNotes from './pages/projects/BunchNotes/BunchNotes.js';
 import Typhon from './pages/projects/Typhon/Typhon.js';
 import InRainbows from './pages/projects/InRainbows/InRainbows.js';
+import ScaleSynthesis from './pages/projects/ScaleSynthesis/ScaleSynthesis.js';
+import RITCourseVision from './pages/projects/RITCourseVision/RITCourseVision.js';
+import Resweet from './pages/projects/Resweet/Resweet.js';
+import RasPiDisplay from './pages/projects/RasPiDisplay/RasPiDisplay.js';
+import IDEACard from './pages/projects/IDEACard/IDEACard.js';
 
 import TwelveTone from './pages/playground/TwelveTone/TwelveTone.js';
 import Fourier from './pages/playground/Fourier/Fourier.js';
@@ -59,6 +64,7 @@ function App() {
   }
   
   return (
+    
     <BrowserRouter>
       <div className="App">
         { !window.location.pathname.startsWith('/playground') ? <Header/> :null }
@@ -94,10 +100,16 @@ function App() {
             <Route path="/playground" element={<Playground arriveAtPage={arriveAtPage} />} />
             <Route path="/playground/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
             <Route path="/playground/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/ideacard" element={<IDEACard arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/raspidisplay" element={<RasPiDisplay arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/resweet" element={<Resweet arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/ritcoursevision" element={<RITCourseVision arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/scalesynthesis" element={<ScaleSynthesis arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
-        
       </div>
     </BrowserRouter>
     
