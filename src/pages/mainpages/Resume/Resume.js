@@ -43,14 +43,14 @@ function Resume({ arriveAtPage }) {
 
     return (
         <div className="resumepage-background">
-            <div className="resume-circles-wrapper">
+            {/* <div className="resume-circles-wrapper">
                 <div className="resume-circles">
                     <div className="resume-circlerow">
                     {[...Array(100)].map(((e, i) => <div key={i} className="resume-circle" onMouseEnter={hoverCircle}></div>))}
 
                     </div>
                 </div>
-            </div>
+            </div> */}
             
             <div className="resume-background">
                 <div className="embed-container">
