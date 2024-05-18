@@ -22,6 +22,12 @@ import coursevisionUrl from '../../projects/RITCourseVision/icon.png';
 import bezierUrl from '../../projects/BezierCreator/icon.png';
 import composeUrl from '../../projects/AICompose/icon.png';
 import bankedCurvesUrl from '../../projects/BankedCurves/icon.png';
+import sugarUrl from '../../projects/SugarRush/icon.png';
+import hotncoldUrl from '../../projects/HotNCold/icon.png';
+import resweetUrl from '../../projects/Resweet/icon.png';
+import scalesUrl from '../../projects/ScaleSynthesis/icon.png';
+import twelveUrl from '../../projects/TwelveTone/icon.png';
+import fourierUrl from '../../projects/Fourier/icon.png';
 import nullUrl from './null.png';
 
 import proceduralArtUrl from '../../projects/ProceduralArt/icon.png';
@@ -49,21 +55,21 @@ function Projects({ arriveAtPage, mainRef, projectsScroll }) {
           <ProjectCard title="AI Compose" description="A pseudo-random 2-part composition tool that applies the rules of counterpoint to generate interesting and sonorous melody and accompaniament." image={composeUrl} url="aicompose" color="#525252"/>
           <ProjectCard title="Words" description="An interactive visualization tool for the semantic similarity of words, which groups words based on the distance of their entries in a thesaurus." image={wordsUrl} url="words" color="#1b1200"/>
           <ProjectCard title="Banked Curves" description="A simulation to demonstrate the physics of banked curves, written as a webpage to help future students of AP Physics C at Hopkins School." image={bankedCurvesUrl} url="bankedcurves" color="#294681"/>
-          <ProjectCard title="Total Difference Labeling" description="This is SimScrape" image={nullUrl} url="totaldifferencelabeling" color="#22401b"/>
-          <ProjectCard title="HotNCold" description="This is SimScrape" image={nullUrl} url="hotncold" color="#22401b"/>
-          <ProjectCard title="Sugar Rush" description="This is SimScrape" image={nullUrl} url="sugarrush" color="#22401b"/>
-          <ProjectCard title="Surprise MeStore" description="This is Surprise MeStore" image={storeUrl} url="surprisemestore" color="#acada8"/>
-          <ProjectCard title="COMIX" description="This is COMIX" image={comixUrl} url="comix" color="#ff7070"/>
-          <ProjectCard title="BunchNotes" description="This is BunchNotes" image={bunchnotesUrl} url="bunchnotes" color="#649fcb"/>
-          <ProjectCard title="Typhon" description="This is Typhon" image={typhonUrl} url="typhon" color="#08382a"/>
-          <ProjectCard title="InRainbows" description="This is In Rainbows" image={rainbowsUrl} url="inrainbows" color="#430806"/>
-          <ProjectCard title="IDEA Card" description="This is IDEA Card" image={ideaCardUrl} url="ideacard" color="#32435f"/>
-          <ProjectCard title="RasPi Display" description="This is RasPi Display" image={raspiUrl} url="raspidisplay" color="#c15d1b"/>
-          <ProjectCard title="Resweet" description="This is Resweet" image={nullUrl} url="resweet" color="#22401b"/>
-          <ProjectCard title="RIT CourseVision" description="This is RIT CourseVision" image={coursevisionUrl} url="ritcoursevision" color="#f76902"/>
-          <ProjectCard title="Scale Synthesis" description="This is Scale Synthesis" image={nullUrl} url="scalesynthesis" color="#22401b"/>
-          <ProjectCard title="TwelveTone" description="This is TwelveTone" image={nullUrl} url="twelvetone" color="#22401b"/>
-          <ProjectCard title="Fourier" description="This is Fourier" image={nullUrl} url="fourier" color="#22401b"/>
+          <ProjectCard title="Total Difference Labeling" description="A User Interface for drawing and connecting graphs and calculating valid or minimal Total Difference Labelings." image={nullUrl} url="totaldifferencelabeling" color="#3f6b09"/>
+          <ProjectCard title="HotNCold" description="A powered-up laser tag game about capturing the enemy team's flag and bringing it back to your base undetected." image={hotncoldUrl} url="hotncold" color="#005864"/>
+          <ProjectCard title="Sugar Rush" description="A halloween game about a kid on a sugar rush, who steals candy from fellow trick-or-treaters to use as weapons against them." image={sugarUrl} url="sugarrush" color="#26153c"/>
+          <ProjectCard title="Surprise MeStore" description="An electronic store for blind boxes, supporting order tracking and inventory management for a marketplace of sellers and buyers." image={storeUrl} url="surprisemestore" color="#acada8"/>
+          <ProjectCard title="COMIX" description="A native desktop application for managing your comic book collection, optimized for large collections and operations such as searching and sorting the collection." image={comixUrl} url="comix" color="#ff7070"/>
+          <ProjectCard title="BunchNotes" description="A public note-sharing application for your college, making it easy to find up-to-date notes from other students in similar classes." image={bunchnotesUrl} url="bunchnotes" color="#649fcb"/>
+          <ProjectCard title="Typhon" description="The award-winning hackathon game which puts a real-time, fantasy spin on the kid's game Rock Paper Scissors." image={typhonUrl} url="typhon" color="#08382a"/>
+          <ProjectCard title="InRainbows" description="A musical creative adventure which involves arranging, recording, and mixing all of Radiohead's In Rainbows for several cello parts." image={rainbowsUrl} url="inrainbows" color="#430806"/>
+          <ProjectCard title="IDEA Card" description="A full-stack application integrated with Google Cloud products, built to assist in the visibility of disabled job applicants who suffer discrimination in the hiring process." image={ideaCardUrl} url="ideacard" color="#32435f"/>
+          <ProjectCard title="RasPi Display" description="A live-updating webpage to display a 'smart' clock on a Raspberry PI, including integrations with Spotify, Apple Weather, and Apple Calendar." image={raspiUrl} url="raspidisplay" color="#c15d1b"/>
+          <ProjectCard title="Resweet" description="A mobile app that scans and itemizes your receipt with AI to make bill-splitting easier, whether you're at the supermarket or a restaurant." image={resweetUrl} url="resweet" color="#673AB7"/>
+          <ProjectCard title="RIT CourseVision" description="A redesign of RIT's Student Information System which implements desireable features such as course planning, automatedd flowcharts, and improved usability for viewing course info." image={coursevisionUrl} url="ritcoursevision" color="#f76902"/>
+          <ProjectCard title="Scale Synthesis" description='A compositional tool for writing and playing music in scales with other than 12 tones per octave, used to compose the minimalist piece "I always end up where I began".' image={scalesUrl} url="scalesynthesis" color="#c3413c"/>
+          <ProjectCard title="TwelveTone" description="A visualization for twelve-tone matrices, as described by Arnold Shoenberg, as a side-by-side tool for analyzing pieces composed using twelve-tone technique." image={twelveUrl} url="twelvetone" color="#7c4118"/>
+          <ProjectCard title="Fourier" description="An online, web-embedded calculator for the Discrete Fourier Transform, to aid in evaluating the appearance of frequency spectra of various sampled functions." image={fourierUrl} url="fourier" color="#79953c"/>
 
             {/* <Route path="/projects/ideacard" element={<IDEACard arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/raspidisplay" element={<RasPiDisplay arriveAtPage={arriveAtPage} />} />
