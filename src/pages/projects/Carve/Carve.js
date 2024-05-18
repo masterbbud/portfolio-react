@@ -1,8 +1,8 @@
-import './SimScrape.css';
+import './Carve.css';
 import '../../../App.css';
 import { useEffect } from 'react';
 
-function SimScrape({ arriveAtPage }) {
+function Carve({ arriveAtPage }) {
     
     useEffect(() => {
         arriveAtPage('App-projectsbox', 'clickedProjects');
@@ -10,9 +10,9 @@ function SimScrape({ arriveAtPage }) {
 
     return (
         <div>
-          SimScrape!
+          Carve!
         </div>
     );
 }
 
-export default SimScrape;
+export default Carve;

@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Link, Route, Routes, ScrollRestoration } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, ScrollRestoration, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/mainpages/Home/Home.js';
 import Contact from './pages/mainpages/Contact/Contact.js';
 import Projects from './pages/mainpages/Projects/Projects.js';
@@ -9,7 +9,7 @@ import Playground from './pages/mainpages/Playground/Playground.js';
 
 import GhostJazz from './pages/projects/GhostJazz/GhostJazz.js';
 import TrainedTerrain from './pages/projects/TrainedTerrain/TrainedTerrain.js';
-import SimScrape from './pages/projects/SimScrape/SimScrape.js';
+import Carve from './pages/projects/Carve/Carve.js';
 import Simultactics from './pages/projects/Simultactics/Simultactics.js';
 import ProceduralArt from './pages/projects/ProceduralArt/ProceduralArt.js';
 import GeoImg from './pages/projects/GeoImg/GeoImg.js';
@@ -45,6 +45,8 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+  
+
   const [update, forceUpdate] = useState(0);
 
   function arriveAtPage(id, headerClass) {
@@ -77,7 +79,7 @@ function App() {
             <Route path="/contact" element={<Contact arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/ghostjazz" element={<GhostJazz arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/trainedterrain" element={<TrainedTerrain arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/simscrape" element={<SimScrape arriveAtPage={arriveAtPage} />} />
+            <Route path="/projects/carve" element={<Carve arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/simultactics" element={<Simultactics arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/proceduralart" element={<ProceduralArt arriveAtPage={arriveAtPage} />} />
             <Route path="/projects/geoimg" element={<GeoImg arriveAtPage={arriveAtPage} />} />
