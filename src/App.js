@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Link, Route, Routes, ScrollRestoration, createBrowserRouter } from 'react-router-dom';
+import { Route, createBrowserRouter, RouterProvider, Outlet, createRoutesFromElements } from 'react-router-dom';
 import Home from './pages/mainpages/Home/Home.js';
 import Contact from './pages/mainpages/Contact/Contact.js';
 import Projects from './pages/mainpages/Projects/Projects.js';
@@ -41,16 +41,75 @@ import Fourier from './pages/playground/Fourier/Fourier.js';
 import PageNotFound from './pages/other/PageNotFound/PageNotFound.js'
 import Header from './components/Header/Header.js'
 import InDev from './components/InDev/InDev.js'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createRef, useRef } from 'react';
 
 function App() {
 
-  
+  const MainRef = createRef();
+  const projectsScroll = useRef(0);
 
-  const [update, forceUpdate] = useState(0);
+  function handleScroll() {
+    if (window.location.href.endsWith('projects')) {
+      projectsScroll.current = MainRef.current.scrollTop;
+    }
+  }
+
+  const PageLayout = () => (
+    <div className="App">
+      { !window.location.pathname.startsWith('/playground') ? <Header/> :null }
+      { !window.location.pathname.startsWith('/playground') ? <InDev/>:null }
+      <div id="App-main" className="page-main" ref={MainRef} onScroll={handleScroll} >
+        <Outlet />
+      </div>
+    </div>
+  );
+
+
+  const router = createBrowserRouter(
+    createRoutesFromElements (
+      <Route element={<PageLayout />}>
+        <Route path="/" element={<Home arriveAtPage={arriveAtPage} />} />
+        <Route path="/resume" element={<Resume arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects" element={<Projects arriveAtPage={arriveAtPage} mainRef={MainRef} projectsScroll={projectsScroll} />} />
+        <Route path="/contact" element={<Contact arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/ghostjazz" element={<GhostJazz arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/trainedterrain" element={<TrainedTerrain arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/carve" element={<Carve arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/simultactics" element={<Simultactics arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/proceduralart" element={<ProceduralArt arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/geoimg" element={<GeoImg arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/alfa" element={<Alfa arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/asciiimages" element={<AsciiImages arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/knottheory" element={<KnotTheory arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/gloomhavencardcreator" element={<GloomhavenCardCreator arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/beziercreator" element={<BezierCreator arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/aicompose" element={<AICompose arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/words" element={<Words arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/bankedcurves" element={<BankedCurves arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/totaldifferencelabeling" element={<TotalDifferenceLabeling arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/hotncold" element={<HotNCold arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/sugarrush" element={<SugarRush arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/surprisemestore" element={<SurpriseMeStore arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/comix" element={<Comix arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/bunchnotes" element={<BunchNotes arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/typhon" element={<Typhon arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/inrainbows" element={<InRainbows arriveAtPage={arriveAtPage} />} />
+        <Route path="/playground" element={<Playground arriveAtPage={arriveAtPage} />} />
+        <Route path="/playground/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
+        <Route path="/playground/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/ideacard" element={<IDEACard arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/raspidisplay" element={<RasPiDisplay arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/resweet" element={<Resweet arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/ritcoursevision" element={<RITCourseVision arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/scalesynthesis" element={<ScaleSynthesis arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
+    )
+  )
 
   function arriveAtPage(id, headerClass) {
-    forceUpdate(update + 1);
     if (!document.getElementById(id)) {
       return;
     }
@@ -63,58 +122,11 @@ function App() {
     let elem = document.getElementById('App-coverbar');
     elem.classList.remove(...elem.classList);
     elem.classList.add(headerClass);
+    MainRef.current.scrollTo(0,0);
   }
   
   return (
-    
-    <BrowserRouter>
-      <div className="App">
-        { !window.location.pathname.startsWith('/playground') ? <Header/> :null }
-        { !window.location.pathname.startsWith('/playground') ? <InDev/>:null }
-        <div className="page-main">
-          <Routes>
-            <Route path="/" element={<Home arriveAtPage={arriveAtPage} />} />
-            <Route path="/resume" element={<Resume arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects" element={<Projects arriveAtPage={arriveAtPage} />} />
-            <Route path="/contact" element={<Contact arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/ghostjazz" element={<GhostJazz arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/trainedterrain" element={<TrainedTerrain arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/carve" element={<Carve arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/simultactics" element={<Simultactics arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/proceduralart" element={<ProceduralArt arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/geoimg" element={<GeoImg arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/alfa" element={<Alfa arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/asciiimages" element={<AsciiImages arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/knottheory" element={<KnotTheory arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/gloomhavencardcreator" element={<GloomhavenCardCreator arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/beziercreator" element={<BezierCreator arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/aicompose" element={<AICompose arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/words" element={<Words arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/bankedcurves" element={<BankedCurves arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/totaldifferencelabeling" element={<TotalDifferenceLabeling arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/hotncold" element={<HotNCold arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/sugarrush" element={<SugarRush arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/surprisemestore" element={<SurpriseMeStore arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/comix" element={<Comix arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/bunchnotes" element={<BunchNotes arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/typhon" element={<Typhon arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/inrainbows" element={<InRainbows arriveAtPage={arriveAtPage} />} />
-            <Route path="/playground" element={<Playground arriveAtPage={arriveAtPage} />} />
-            <Route path="/playground/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
-            <Route path="/playground/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/ideacard" element={<IDEACard arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/raspidisplay" element={<RasPiDisplay arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/resweet" element={<Resweet arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/ritcoursevision" element={<RITCourseVision arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/scalesynthesis" element={<ScaleSynthesis arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
-            <Route path="/projects/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
-    
+    <RouterProvider router={router} />
   );
 }
 

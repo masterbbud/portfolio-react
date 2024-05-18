@@ -1,6 +1,6 @@
 import './Projects.css';
 import '../../../App.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ProjectCard from '../../../components/ProjectCard/ProjectCard.js';
 import ghostJazzUrl from '../../projects/GhostJazz/icon.png';
 import trainedTerrainUrl from '../../projects/TrainedTerrain/icon.png';
@@ -26,10 +26,11 @@ import nullUrl from './null.png';
 
 import proceduralArtUrl from '../../projects/ProceduralArt/icon.png';
 
-function Projects({ arriveAtPage }) {
+function Projects({ arriveAtPage, mainRef, projectsScroll }) {
 
     useEffect(() => {
         arriveAtPage('App-projectsbox', 'clickedProjects');
+        mainRef.current.scrollTo(0, projectsScroll.current);
     }, [])
 
     return (
