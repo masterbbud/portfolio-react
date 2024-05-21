@@ -3,6 +3,7 @@ import '../../../App.css';
 import { useEffect } from 'react';
 import Stats from '../../../components/Stats/Stats.js';
 import ghostJazzTitle from './ghostjazztitle.png';
+import iconUrl from './icon.png';
 
 function GhostJazz({ arriveAtPage }) {
     
@@ -39,6 +40,15 @@ function GhostJazz({ arriveAtPage }) {
         </div>
         
     );
+}
+
+export const info = {
+    title: "Ghost Jazz",
+    description: "A jazz-inspired game in which a musical ghost plays his heart out to fend off the oncoming waves of skeletons at a jazz club.",
+    image: iconUrl,
+    url: "ghostjazz",
+    color: "#379674",
+    date: new Date('10/27/2023')
 }
 
 export default GhostJazz;

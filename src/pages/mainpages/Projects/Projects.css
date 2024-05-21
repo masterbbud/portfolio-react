@@ -4,4 +4,77 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 2vh;
+    position: relative;
+}
+
+.projects-sortoverlay {
+    position: fixed;
+    left: 1vw;
+    top: 8vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 6vw;
+}
+
+.projects-sortbutton {
+    border: 4px solid #b42fc9;
+    font-size: 3vh;
+    padding: 2vh;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    width: 60%;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-sortbutton:hover {
+    border: 4px solid #e344fc;
+}
+
+.projects-sortbutton.selected {
+    width: 100%;
+}
+
+.projects-sortbutton > div {
+    pointer-events: none;
+}
+
+.projects-sorttooltip {
+    display: none;
+    position: absolute;
+    left: calc(120% + 10px);
+    top: 15%;
+    background: rgba(0,0,0,0.8);
+    padding: 1vh 2vh;
+    animation: fadeIn 0.2s;
+    border-radius: 10px 2px 10px 2px;
+    width: max-content;
+}
+
+.projects-sorttooltip.show {
+    display: block;
+}
+
+.projects-sorttooltip::after {
+    position: absolute;
+    right: 100%;
+    top: calc(50% - 10px);
+    width: 0;
+    height: 0;
+    content: "";
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(0,0,0,0.8);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
