@@ -6,7 +6,6 @@ onmessage = (e) => {
   if (e.data.type === 'START') {
     raceOrder = e.data.raceOrder;
     raceBattleQuantities = e.data.raceBattleQuantities;
-    console.log(e.data);
     shipSpecs = e.data.shipSpecs;
 
     const [summaryStats, allStats] = computeResults();
@@ -15,7 +14,6 @@ onmessage = (e) => {
 };
 
 function computeResults() {
-    // TODO validate on click to be sure there is at least one race in combat
     rollProbabilitiesCache = {};
 
     let results = computeResultsRecursive(computeShipsForRace(raceOrder[0]), 1);

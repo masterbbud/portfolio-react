@@ -39,7 +39,6 @@ function BattleMenu({ races, shipSpecs, raceToColor, raceOrder, setRaceOrder, ra
             switch (e.data.type) {
             case 'PROGRESS':
                 setProgress(e.data.percent);
-                console.log(e.data.percent);
                 break;
             case 'DONE':
                 setProgress(100);
@@ -111,7 +110,7 @@ function BattleMenu({ races, shipSpecs, raceToColor, raceOrder, setRaceOrder, ra
                 <div className="eclipse-battle-selectships">
                     <RaceSelector races={races} selectedRace={selectedRace} selectRace={selectRace} />
                     {(selectedRace === "NPC" ? npcShipTypes : playerShipTypes).map(
-                        shipType => <ShipCounter shipType={shipType} race={selectedRace} raceBattleQuantities={raceBattleQuantities} setRaceBattleQuantities={setRaceBattleQuantities} raceOrder={raceOrder} setRaceOrder={setRaceOrder} />
+                        (shipType, i) => <ShipCounter key={i} shipType={shipType} race={selectedRace} raceBattleQuantities={raceBattleQuantities} setRaceBattleQuantities={setRaceBattleQuantities} raceOrder={raceOrder} setRaceOrder={setRaceOrder} />
                     )}
                 </div>
                 :

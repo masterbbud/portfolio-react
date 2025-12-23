@@ -17,7 +17,6 @@ function ShipCounter({ shipType, race, raceBattleQuantities, setRaceBattleQuanti
     }
 
     function changeQuantity(delta) {
-        console.log(raceBattleQuantities);
         if (raceBattleQuantities[race][shipType] + delta < 0 || raceBattleQuantities[race][shipType] + delta > maxQuantitiesPerType[shipType]) {
             return;
         }
@@ -28,13 +27,11 @@ function ShipCounter({ shipType, race, raceBattleQuantities, setRaceBattleQuanti
         if (newRaceBattleQuantities[race][shipType] > 0 && !raceOrder.includes(race)) {
             raceOrder.push(race);
             setRaceOrder([...raceOrder]);
-            console.log(raceOrder);
         }
 
         if (!Object.values(newRaceBattleQuantities[race]).filter(shipType => shipType != 0).length && raceOrder.includes(race)) {
             raceOrder.splice(raceOrder.indexOf(race), 1)
             setRaceOrder([...raceOrder]);
-            console.log(raceOrder);
         }
     }
 

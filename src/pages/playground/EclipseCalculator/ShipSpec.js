@@ -206,7 +206,7 @@ function ShipSpec({ playerId, shipType, shipClass, tiles, stats, selectedTile, s
                 :
                     <div className={`eclipse-shipspec-cols eclipse-shipspec-${shipType}`}>
                         {tilesPerRow.map((col, i) => <div key={i} className="eclipse-shipspec-column">
-                            {col.map((tile, j) => <TileSlot key={j} playerId={playerId} shipType={shipType} indexOfSpec={tile.i} tileData={tile.tileData} selectedTile={selectedTile} setSelectedTile={setSelectedTile} attachedBonus={bonusTiles?.[playerId]?.[shipType]?.[i]?.[j]} /> )}
+                            {col.map((tile, j) => <TileSlot key={`${i}-${j}`} playerId={playerId} shipType={shipType} indexOfSpec={tile.i} tileData={tile.tileData} selectedTile={selectedTile} setSelectedTile={setSelectedTile} attachedBonus={bonusTiles?.[playerId]?.[shipType]?.[i]?.[j]} /> )}
                         </div>)}
                     </div>
                 }

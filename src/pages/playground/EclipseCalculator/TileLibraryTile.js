@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function TileLibraryTile({ tileData, selectLibraryTile }) {
 
     function selectThis() {
-        console.log('select lib tile')
         selectLibraryTile(tileData);
     }
 

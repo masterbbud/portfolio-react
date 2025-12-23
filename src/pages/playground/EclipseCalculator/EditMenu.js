@@ -20,20 +20,17 @@ function EditMenu({ races, shipSpecs, setShipSpecs, tiles, baseShipsPerRace, npc
 
     function selectLibraryTile(tileData) {
         if (selectedTile === null) { return; }
-        console.log(selectedTile);
         let shipSpec = shipSpecs[selectedTile.playerId].filter(
             ship => ship.type === selectedTile.shipType
         )[0];
         shipSpec.tiles[selectedTile.index] = tileData;
         shipSpec.tiles = [...shipSpec.tiles];
         recomputeShipSpec(shipSpec, selectedTile.playerId);
-        console.log(shipSpec);
         setShipSpecs({...shipSpecs});
         return;
     }
 
     function recomputeShipSpec(shipSpec, race) {
-        console.log(baseShipsPerRace[race].find(ship => ship.type === shipSpec.type));
         let newStats = structuredClone(baseShipsPerRace[race].find(ship => ship.type === shipSpec.type).stats);
         for (let tile of shipSpec.tiles) {
             if (tile === null) {
@@ -77,7 +74,6 @@ function EditMenu({ races, shipSpecs, setShipSpecs, tiles, baseShipsPerRace, npc
     useEffect(() => {
         for (let [race, shipSpecList] of Object.entries(shipSpecs)) {
             for (let shipSpec of shipSpecList) {
-                console.log(shipSpec, race);
                 recomputeShipSpec(shipSpec, race);
             }
         }

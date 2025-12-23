@@ -20,7 +20,6 @@ function TileLibrary({ tileDataList, selectLibraryTile, shipSpecs }) {
         }
         else if (sortMode === "category") {
             setTileResults(tileDataList.toSorted((a, b) => {
-                console.log('huh');
                 let aRank = 0;
                 let bRank = 0;
                 let overallRank = 120;
@@ -55,11 +54,6 @@ function TileLibrary({ tileDataList, selectLibraryTile, shipSpecs }) {
                     .map(x => [x.name, x])).values()
                 ]
             );
-            console.log(Object.values(shipSpecs).map(
-                    raceShips => raceShips.map(
-                        shipSpec => shipSpec.tiles.filter(tile => tile != null)
-                    )
-                ).flat());
         }
     }, [sortMode])
 
@@ -72,7 +66,7 @@ function TileLibrary({ tileDataList, selectLibraryTile, shipSpecs }) {
                 <div onClick={() => setSortMode("category")} className={`eclipse-tilelibrary-filter${sortMode === "category" ? " eclipse-tilelibrary-filter-selected" : ""}`}><img src={SortIcon} /><span>Category</span></div>
             </div>
             <div className="eclipse-tilelibrary-tiles">
-                {tileResults.map(tile => <TileLibraryTile tileData={tile} selectLibraryTile={selectLibraryTile} /> )}
+                {tileResults.map((tile, i) => <TileLibraryTile key={i} tileData={tile} selectLibraryTile={selectLibraryTile} /> )}
                 <TileLibraryTile tileData={null} selectLibraryTile={selectLibraryTile} />
             </div>
         </div>

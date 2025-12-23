@@ -9,7 +9,6 @@ function TileSlot({ playerId, shipType, indexOfSpec, tileData, selectedTile, set
     const [selected, setSelected] = useState(false);
 
     useEffect(() => {
-        console.log(selectedTile);
         if (! selectedTile) { setSelected(false); return; }
         setSelected(selectedTile.playerId === playerId && selectedTile.shipType === shipType && selectedTile.index === indexOfSpec);
     }, [selectedTile, shipType, playerId]);

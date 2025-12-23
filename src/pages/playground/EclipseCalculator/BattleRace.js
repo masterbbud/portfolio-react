@@ -22,7 +22,7 @@ function BattleRace({ race, shipTypes, raceBattleQuantities, setRaceBattleQuanti
                 {race.name}
             </div>
             <div className="eclipse-battle-race-buttons">
-                {shipTypes.map(shipType => <div className="eclipse-battle-race-shiptype">
+                {shipTypes.map((shipType, i) => <div key={i} className="eclipse-battle-race-shiptype">
                     <div className={`eclipse-battle-race-quantitychange${raceBattleQuantities[race.name][shipType] <= 0 ? " disabled" : ""}`}>-</div>
                     <div className="eclipse-battle-race-shiptype-text">{shipType}</div>
                     <div className={`eclipse-battle-race-quantitychange${raceBattleQuantities[race.name][shipType] >= maxQuantitiesPerType[shipType] ? " disabled" : ""}`}>+</div>
