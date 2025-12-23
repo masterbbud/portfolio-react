@@ -6,6 +6,7 @@ function Playground({ arriveAtPage }) {
 
     useEffect(() => {
         arriveAtPage('App-playground', 'clickedPlayground');
+        document.body.style.backgroundColor = '#296399';
     }, [])
 
     return (

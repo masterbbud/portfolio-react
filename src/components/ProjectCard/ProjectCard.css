@@ -13,6 +13,10 @@
     box-shadow: 0 4px 4px rgba(0,0,0,0.5);
 }
 
+.project-card.project-notimplemented {
+    cursor: default;
+}
+
 .projectcard-left {
     flex: 1;
     display: flex;

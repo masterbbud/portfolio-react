@@ -6,6 +6,7 @@ function Contact({ arriveAtPage }) {
 
     useEffect(() => {
         arriveAtPage('App-contactbox', 'clickedContact');
+        document.body.style.backgroundColor = '#165416';
     }, [])
 
     return (

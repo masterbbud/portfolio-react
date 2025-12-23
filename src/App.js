@@ -37,6 +37,7 @@ import IDEACard from './pages/projects/IDEACard/IDEACard.js';
 
 import TwelveTone from './pages/playground/TwelveTone/TwelveTone.js';
 import Fourier from './pages/playground/Fourier/Fourier.js';
+import EclipseCalculator from './pages/playground/EclipseCalculator/EclipseCalculator.js';
 
 import PageNotFound from './pages/other/PageNotFound/PageNotFound.js'
 import Header from './components/Header/Header.js'
@@ -57,7 +58,6 @@ function App() {
   const PageLayout = () => (
     <div className="App">
       { !window.location.pathname.startsWith('/playground') ? <Header/> :null }
-      { !window.location.pathname.startsWith('/playground') ? <InDev/>:null }
       <div id="App-main" className="page-main" ref={MainRef} onScroll={handleScroll} >
         <Outlet />
       </div>
@@ -104,6 +104,8 @@ function App() {
         <Route path="/projects/scalesynthesis" element={<ScaleSynthesis arriveAtPage={arriveAtPage} />} />
         <Route path="/projects/twelvetone" element={<TwelveTone arriveAtPage={arriveAtPage} />} />
         <Route path="/projects/fourier" element={<Fourier arriveAtPage={arriveAtPage} />} />
+        <Route path="/playground/eclipsecalculator" element={<EclipseCalculator arriveAtPage={arriveAtPage} />} />
+        <Route path="/projects/eclipsecalculator" element={<EclipseCalculator arriveAtPage={arriveAtPage} />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )
@@ -113,6 +115,7 @@ function App() {
     if (!document.getElementById(id)) {
       return;
     }
+    console.log(id)
     document.getElementById('App-homebox').classList.remove('clicked');
     document.getElementById('App-resumebox').classList.remove('clicked');
     document.getElementById('App-projectsbox').classList.remove('clicked');
@@ -122,6 +125,7 @@ function App() {
     let elem = document.getElementById('App-coverbar');
     elem.classList.remove(...elem.classList);
     elem.classList.add(headerClass);
+    console.log(elem.style.background);
     MainRef.current.scrollTo(0,0);
   }
   

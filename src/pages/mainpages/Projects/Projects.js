@@ -32,42 +32,44 @@ import { info as ResweetInfo } from '../../projects/Resweet/Resweet.js';
 import { info as ScaleSynthesisInfo } from '../../projects/ScaleSynthesis/ScaleSynthesis.js';
 import { info as TwelveToneInfo } from '../../projects/TwelveTone/TwelveTone.js';
 import { info as FourierInfo } from '../../projects/Fourier/Fourier.js';
+import { info as EclipseCalculatorInfo } from '../../projects/EclipseCalculator/EclipseCalculator.js';
 
 import proceduralArtUrl from '../../projects/ProceduralArt/icon.png';
 
-function Projects({ arriveAtPage, mainRef, projectsScroll }) {
+export const allInfo = [
+    GhostJazzInfo,
+    TrainedTerrainInfo,
+    CarveInfo,
+    SimultacticsInfo,
+    ProceduralArtInfo,
+    GeoImgInfo,
+    TyphonInfo,
+    BunchNotesInfo,
+    AlfaInfo,
+    AsciiImagesInfo,
+    KnotTheoryInfo,
+    GloomhavenCardCreatorInfo,
+    WordsInfo,
+    InRainbowsInfo,
+    ComixInfo,
+    SurpriseMeStoreInfo,
+    IDEACardInfo,
+    RasPiDisplayInfo,
+    RITCourseVisionInfo,
+    BezierCreatorInfo,
+    AIComposeInfo,
+    BankedCurvesInfo,
+    TotalDifferenceLabelingInfo,
+    SugarRushInfo,
+    HotNColdInfo,
+    ResweetInfo,
+    ScaleSynthesisInfo,
+    TwelveToneInfo,
+    FourierInfo,
+    EclipseCalculatorInfo,
+];
 
-    const allInfo = [
-        GhostJazzInfo,
-        TrainedTerrainInfo,
-        CarveInfo,
-        SimultacticsInfo,
-        ProceduralArtInfo,
-        GeoImgInfo,
-        TyphonInfo,
-        BunchNotesInfo,
-        AlfaInfo,
-        AsciiImagesInfo,
-        KnotTheoryInfo,
-        GloomhavenCardCreatorInfo,
-        WordsInfo,
-        InRainbowsInfo,
-        ComixInfo,
-        SurpriseMeStoreInfo,
-        IDEACardInfo,
-        RasPiDisplayInfo,
-        RITCourseVisionInfo,
-        BezierCreatorInfo,
-        AIComposeInfo,
-        BankedCurvesInfo,
-        TotalDifferenceLabelingInfo,
-        SugarRushInfo,
-        HotNColdInfo,
-        ResweetInfo,
-        ScaleSynthesisInfo,
-        TwelveToneInfo,
-        FourierInfo,
-    ]
+function Projects({ arriveAtPage, mainRef, projectsScroll }) {
 
     const timeouts = useRef({});
     const [sortType, setSortType] = useState((x, y) => alphabeticalSort);
@@ -112,15 +114,16 @@ function Projects({ arriveAtPage, mainRef, projectsScroll }) {
 
     useEffect(() => {
         arriveAtPage('App-projectsbox', 'clickedProjects');
+        document.body.style.backgroundColor = '#541c5d';
         mainRef.current.scrollTo(0, projectsScroll.current);
     }, [])
 
     return (
         <div className="projects-background">
             {allInfo.toSorted((x, y) => sortType(x, y)).map((el, i) => 
-                <ProjectCard key={i} title={el.title} description={el.description} image={el.image} url={el.url} color={el.color}/>
+                <ProjectCard key={i} title={el.title} description={el.description} image={el.image} url={el.url} color={el.color} implemented={el.implemented ? true : false} />
             )}
-            <div className="projects-sortoverlay">
+            {/* <div className="projects-sortoverlay">
                 <div className="projects-sortbutton" id="projects-sortbutton-alphabetical" onMouseEnter={hoverSort} onMouseLeave={unHoverSort} onClick={clickSort}>
                     <div className="projects-sorticon">Test</div>
                     <div className="projects-sorttooltip">Sort by Name</div>
@@ -133,7 +136,7 @@ function Projects({ arriveAtPage, mainRef, projectsScroll }) {
                     <div className="projects-sorticon">Test</div>
                     <div className="projects-sorttooltip">Sort by Project Size</div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -22,7 +22,8 @@ export const info = {
     image: iconUrl,
     url: "twelvetone",
     color: "#7c4118",
-    date: new Date('03/17/2024')
+    date: new Date('03/17/2024'),
+    implemented: true
 }
 
 export default TwelveTone;

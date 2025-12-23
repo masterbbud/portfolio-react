@@ -22,7 +22,8 @@ export const info = {
     image: iconUrl,
     url: "fourier",
     color: "#79953c",
-    date: new Date('04/06/2024')
+    date: new Date('04/06/2024'),
+    implemented: true
 }
 
 export default Fourier;

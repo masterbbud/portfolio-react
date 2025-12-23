@@ -22,13 +22,14 @@ function Resume({ arriveAtPage }) {
 
     useEffect(() => {
         arriveAtPage('App-resumebox', 'clickedResume');
+        document.body.style.backgroundColor = '#296399';
     }, [])
 
     function downloadResume() { 
         const pdfUrl = imgUrl;
         const link = document.createElement("a");
         link.href = pdfUrl;
-        link.download = "BrandonFaunce_Resume.pdf";
+        link.download = "Resume_BrandonFaunce.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

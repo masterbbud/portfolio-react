@@ -1,11 +1,12 @@
 .twelvetone-background {
+    padding-top: 2em;
     font-family: Poppins;
+    background-color: white;
 }
 
 .twelvetone-header {
     font-weight: bold;
     font-size: 2em;
-    margin-top: 1em;
 }
 
 .twelvetone-content {

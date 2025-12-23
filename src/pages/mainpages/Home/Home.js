@@ -1,12 +1,17 @@
 import './Home.css';
 import '../../../App.css';
 import { useEffect } from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
 import Splatter from '../../../components/Splatter/Splatter.js';
+import { allInfo } from '../Projects/Projects.js';
 
 function Home({ arriveAtPage }) {
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         arriveAtPage('App-homebox', 'clickedHome');
+        document.body.style.backgroundColor = '#943208';
     }, [])
 
     return (
@@ -22,6 +27,29 @@ function Home({ arriveAtPage }) {
                                 <div key={i} className="home-hex"></div>
                             ))}
                         </div>
+                    ))}
+                </div>
+            </div>
+
+            <div id="home-projectscroller" className="home-projectscroller">
+                <div className="home-scrollablelist">
+                    {allInfo.map(((v, k) => 
+                        <div key={k} className="home-projecticon"
+                            // onClick={() => {
+                            //     document.getElementById("App-coverbar").style.background = "";
+                            //     navigate("projects/" + v.url);
+                            // }}
+                        ><img src={v.image}></img></div>
+                    ))}
+                </div>
+                <div className="home-scrollablelist">
+                    {allInfo.map(((v, k) => 
+                        <div key={k} className="home-projecticon"
+                            // onClick={() => {
+                            //     document.getElementById("App-coverbar").style.background = "";
+                            //     navigate("projects/" + v.url);
+                            // }}
+                        ><img src={v.image}></img></div>
                     ))}
                 </div>
             </div>
